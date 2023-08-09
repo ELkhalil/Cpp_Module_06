@@ -1,0 +1,201 @@
+***** Historical Ideas From C language releated to the CASTING ****
+
+                From C - Type conversion
+               ---------------------------
+When we code we came across casting mostly the (Explicit) one but there is also the implicit cast
+the idea is the behavior of them is not the always the same and here when it gets hard...
+
+the first Behavior is :
+-> The Conversion :
+    // implicit conversion cast:
+        int a = 42; we want to cast it to a double (8 bits) => double b = a;
+    // Explicit conversion cast:
+        a = (double)b;
+
+the representation of floats and doubles in memory differ from int as it is not linear in memory as integers
+(sign | exponent | mantissa)
+
+-> The transforming the coding of a byte to another byte to keep the same value is called a conversion 
+    it is the first type of cast we will talk about.
+    -> it is possible to do implicit casting and also Explicit casting.
+
+Example (Showing the variable are stored differently): (int vs double)
+       [42]:   00000000 00000000 00000000 00101010
+[42.000000]:   0 1000000100 010100000000000000000000000000000000000
+
+as you saw the values are the same But the physical representation in memory differ between the two
+it's not going to be explicitly casted...
+
+the idea is to have an explicit cast when u want to promote a different type so u won't lose the precision of course.
+
+                From C - Type reinterpretation
+               -------------------------------
+as we already discussed that in C the type conversion make it easier for us to transform and rearrange a set of bit's...
+when we don't have any changes in bit's order that's when wa have a type reinterpretation
+
+casting using addresses from void * to a type or the opposite like this example:
+    int* b;
+    void*   a = &b;     // implicit cast (it is okay to do this !!)
+    but when doing the opposite like this :
+
+    b = &a; // here when it get's bad you have to do it in a clean manner
+    b = (int *)a // Explicitly doing it for better outcome.
+
+                From C - Type qualifier reinterpretation
+               ------------------------------------------
+Type qualifiers in C are keywords that can be used to modify the properties of variables or pointers.
+These qualifiers include const, volatile, restrict, and _Atomic. They provide additional information to the
+compiler about how the variable should be treated and accessed.
+const: This qualifier indicates that the value of the variable should not be modified after its initialization.
+If you attempt to modify a const-qualified variable, the compiler will generate an error.
+Reinterpreting type qualifiers could involve removing or changing these qualifiers inappropriately. For instance, 
+if you have a const-qualified pointer to a variable and you cast it to a non-const pointer, you might be able 
+to modify the supposedly const variable through the non-const pointer, which would be undefined behavior and could lead to runtime errors.
+
+In general, changing type qualifiers without careful consideration can lead to unexpected behavior and bugs in your code.
+It's important to understand the implications of type qualifiers and use them appropriately according to the intended behavior of your program.
+If you need to reinterpret type qualifiers, you should do so with a clear understanding of the potential
+consequences and ensure that it aligns with the logic and requirements of your code.
+
+            ******* Back to THE MAIN SUBJ C++ TYPE CASTING *****
+          --------------------------------------------------------
+do not do C type casting syntax in C++ 
+upCast and DownCast (like the previous example but with classes)
+
+we have 5 cast possibilities :
+    - conversion:
+        Conversion involves changing the data type of a value from one type to another.
+        This can include changing between primitive types, like converting an integer to a floating-point number, or converting between custom data types.
+
+    - reinterpretation:
+        Reinterpretation is a more specific form of casting where the same sequence of bits is treated as a different type. This is often used in low-level programming, like when interpreting raw binary data as different data types without changing the actual bits.
+
+    - type change qualifier:
+        This term might refer to changing the qualifiers of a data type. In languages like C and C++, you can add qualifiers like const or volatile to modify the behavior of a type. Changing qualifiers involves adding or removing these attributes from a type.
+    
+    - upcast:
+        An upcast is a type of conversion where you convert a derived class (subclass) object to its base class (superclass) type. This is generally considered safe, as the derived class inherits all the characteristics of the base class, so no information is lost.
+    
+    - downCast:
+        A downcast is a type of conversion where you convert a base class (superclass) object to its derived class (subclass) type. This can be riskier, as the base class might not contain all the data or behavior of the derived class. To perform a safe downcast, you might need to use techniques like type checking or dynamic casting.
+
+**Static Cast:
+---------------
+Make it possible for us to make simple casting (like we used to in C) also it makes it possible for us to do Upcast and DownCas
+and it knows the relationship between addresses of classes...
+    syntax :
+        static_cast<DataType>(variable) -> mean we want to change the varible type to DataType using a static_cast
+-> it is a compile time cast.
+-> it does things like implicit conversions between types (like float to int)
+-> unlike c-style conversion, controle conversions between pointers. (bs it checks types)
+-> conversions between pointers to related classes. from a base class to it's derived (and of course from derived to base)
+-> perform no run-time checks
+-> should be used if u know that you refer to an obj of specific type and this a run time check would be unecessary
+-> use of it is clear and readable and safe.
+
+**Dynamic cast:
+----------------
+The Most interesting one it is very differente to the other casts (it is a Run Time Type Cast) all of the others are just Compile Time.
+it works with Polymorphisme only... 
+RTTI run time type infos : stocked in the class but in a cashed manner it makes the dynamic cast is it possible or not.
+it works with pointers and references...
+return NULL if cast is not possible.
+-> run time cast
+-> usefule when combined with polymorphic classes.
+-> when a class is polymorphic, dynamic cast perform a special checking during runtime to ensure that the expression yields a valid complete obj of the requested class: if it's valid, returns a pointer; otherwise NULL.
+-> less performance than static cast.
+syntax:
+    synamic_cast<new_type>(expression)
+
+**Reinterpret cast:
+-------------------
+-> converts any ptr type to any other ptr type, even of unrelated classes.
+-> the operation result is a simple binary copy of the value from one ptr to the other.
+-> it is very special and dangerous type of casting operator. it is suggested not to use it unless required.
+-> it is used when we want to work with bits.
+
+Const cast:
+------------
+-> used to cast a way (remove) constness.
+
+C++ is a strongly typed language : meaning there is a type system meaning if i declare something as an integer 
+i can't use it as another dataType (double) or vise versa so i need to stick to my dataType unless it is easier
+for C++ (meaning no data loss) to implicitly change the type and do the conversion.
+or when i Excplicitly telling C++ to do a cast from a type to another one.
+
+C++ style cast do the same as C style it is just adding a syntax sugar to the code.
+C++ may do some extra thigs than C cast.
+
+SUMMARY:
+-> use explicit casting rather than implicit casting; it will make the code more clear.
+-> use static_cast istead of c-style cast as it checks for potential errors, and so it's more safe.
+-> static_cast has better performance than dynamic cast so use it if u know that u refer to an obj of a specific type at compile time
+-> use dynamic_cast when casting parent to child ptrs in polymorphic classes.
+use static_ptr_cast istead of static cast and also use dynamic_ptr_cast instead of dynamic_cast when casting a shared_ptr.
+
+Why We need casting ?
+-----------------------
+-> type Conversion: Sometimes, you might need to convert a value from one data type to another to perform certain operations. For example, converting an integer to a floating-point number to perform division.
+
+-> Compatibility: When you're working with libraries or APIs that expect specific data types, you might need to cast values to match the expected types.
+
+-> Avoiding Loss of Data: When converting from a larger data type to a smaller one (e.g., converting a double to an int), there might be loss of precision or data. Casting allows you to explicitly handle such cases.
+
+what happen when we explicitly cast something ? what happening underground ?
+---------------------------------------------------------------------------
+Let's take the example of a static_cast from an int to a double:
+int intValue = 42;
+double doubleValue = static_cast<double>(intValue);
+
+1 -> Code Analysis: 
+    The compiler first analyzes the code and identifies the explicit cast. It knows that you want to convert an int value to a double value.
+2-> Type Checking: 
+    The compiler checks whether the conversion is valid according to the rules of the static_cast. In this case, it's a safe conversion, so the compiler allows it.
+3-> Conversion: 
+    The compiler generates machine code to perform the conversion. In the case of an int to double conversion, this usually involves reinterpreting the bit pattern of the integer as a floating-point number.
+    The internal representation of integers and floating-point numbers might differ, so this conversion ensures that the value is interpreted correctly in the new data type.
+4-> Memory Allocation: 
+    If necessary, the compiler allocates memory to hold the new value in the target data type. In our example, memory space for a double is allocated.
+5-> Bit Manipulation: 
+    The compiler performs the bit-level manipulation required to reinterpret the bits of the integer as a double-precision floating-point number. This might involve adjusting the exponent and mantissa portions of the bits to match the floating-point format.
+6-> toring the Result: 
+    The converted value is stored in the memory space allocated for the doubleValue variable.
+7-> Lifetime Management: 
+    The converted value is now available in the doubleValue variable for further use in your program.
+
+It's important to note that this is a simplified overview, and the actual process can be more complex, especially for more intricate casts or when dealing with different data types and platforms. The compiler's job is to ensure that the conversion follows the rules you specified and to generate appropriate machine code to achieve that conversion safely and efficiently.
+
+
+(reinterpreting bits) ?
+-------------------------
+"Reinterpreting bits" means treating the binary representation of data as if it were representing a different type. It's like looking at the same set of 0s and 1s and considering them to mean something else. This is done when the binary patterns of two data types are compatible.
+In simpler terms, it's like seeing a jigsaw puzzle piece from one puzzle and using it in another puzzle because the shapes match. However, not all pieces from one puzzle fit in another.
+Reinterpreting bits is a low-level operation used when you need to manipulate memory directly or perform unconventional conversions. It's powerful but requires a deep understanding of data representation.
+When reinterpreting bits, the compiler doesn't typically store the bits in a new location or copy them back after the reinterpretation. Instead, it treats the existing sequence of bits in memory as if they were representing a different data type.
+
+Here's a simplified way to think about it:
+
+Original Data: You have a variable with a certain binary representation in memory. This representation could be for an integer, a floating-point number, or any other data type.
+Reinterpretation: When you reinterpret those same bits as a different data type, you're telling the compiler to use the same sequence of bits but to interpret them according to the rules of the new data type. The memory doesn't change; you're just looking at it from a different perspective.
+Usage: You can then use the reinterpreted value as if it's of the new data type. For example, you might treat bits that originally represented an integer as if they represent a floating-point number.
+Here's an analogy:
+Imagine you have a piece of paper with a drawing of a cat. Now, if you turn the paper upside down, you might start seeing the drawing as a dog instead. The paper hasn't physically changed; you're just looking at the same lines in a different way, giving them a new meaning.
+Similarly, when reinterpreting bits, you're not physically moving or copying data. You're changing how you perceive the existing bits in memory, assigning them a new semantic interpretation based on the new data type's rules. This operation is particularly useful when you understand the underlying binary format and know how to interpret it correctly for a different type's representation.
+
+Certainly, here's a brief conclusion along with a table summarizing when to use each casting operator and when to avoid them:
+
+### Conclusion:
+
+Casting in C++ allows you to convert between different data types. Each casting operator has its own purpose and should be used carefully based on the specific situation. Understanding when to use each operator and their limitations is crucial for writing safe and maintainable code.
+
+### Summary Table:
+
+| Casting Operator   | When to Use                                           | When to Avoid                                      |
+|-------------------|-------------------------------------------------------|----------------------------------------------------|
+| `static_cast`     | For standard type conversions and safe downcasting.   | For upcasting, conversions that might lose data.  |
+| `dynamic_cast`    | For safe downcasting within polymorphic hierarchies. | For non-polymorphic types or upcasting.           |
+| `reinterpret_cast`| For low-level bit manipulation and reinterpretation. | For regular type conversions or portability.     |
+| `const_cast`      | For adding or removing the `const` qualifier.        | For modifying `const` variables unsafely.        |
+| C-Style Cast      | For general-purpose casting, including various types.| For explicit type-safe casting and readability.  |
+
+Remember that choosing the right casting operator depends on the specific requirements of your code, the safety of the conversion, and your understanding of the underlying data types. Whenever possible, prioritize safer and more explicit casting operators (`static_cast`, `dynamic_cast`, `const_cast`, and `reinterpret_cast`) over the more general C-style cast for better code clarity and maintainability.
