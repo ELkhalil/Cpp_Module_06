@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 14:00:42 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/13 15:02:23 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/13 15:32:54 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,6 @@ public:
     bool         getIsDoubleImpossible ( void ) const;
 
 private:
-    char         _parseType( std::string const& input );
-    bool         _isValidChar( std::string const& input );
-    bool         _isValidInt( std::string const& input );
-    bool         _isValidFloat( std::string const& input );
-    bool         _isValidDouble( std::string const& input );
-    bool         _isSpecialFloat( std::string const& input );
-    bool         _isSpecialDouble (std::string const& input );
-
-    void         _convertChar( std::string const& input );
-    void         _convertInt( std::string const& input );
-    void         _convertFloat( std::string const& input );
-    void         _convertDouble( std::string const& input );
-
     char         _charValue;
     int          _intValue;
     float        _floatValue;
@@ -69,6 +56,20 @@ private:
     bool         _intImpossible;
     bool         _floatImpossible;
     bool         _doubleImpossible;
+
+    char         _parseType( std::string const& input );
+    bool         _isValidChar( std::string const& input );
+    bool         _isValidInt( std::string const& input );
+    bool         _isValidFloat( std::string const& input );
+    bool         _isValidDouble( std::string const& input );
+
+    bool         _isSpecialFloat( std::string const& input );
+    bool         _isSpecialDouble (std::string const& input );
+
+    void         _convertChar( std::string const& input );
+    void         _convertInt( std::string const& input );
+    void         _convertFloat( std::string const& input );
+    void         _convertDouble( std::string const& input );
 };
 
 std::ostream& operator<<(std::ostream& out, ScalarConverter const& scalar);

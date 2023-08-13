@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 12:15:59 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/13 15:24:25 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/13 15:34:22 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ ScalarConverter& ScalarConverter::operator= (ScalarConverter const& other)
     }
     return (*this);
 }
-
 
 // Exception Handling
 const char* ScalarConverter::EmptyInputException::what() const throw()
