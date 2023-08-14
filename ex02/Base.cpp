@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 14:28:08 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/14 16:36:16 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/14 16:45:24 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 Base::~Base   ( void )
 {
-    std::cout << "Base Destructor" << std::endl;
+    std::cout << "Virtual Base Destructor" << std::endl;
 }
 
 Base*   generate(void)

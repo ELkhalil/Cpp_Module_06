@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 13:25:22 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/14 13:58:06 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/14 16:46:33 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int main( void )
         else
             std::cout << "Serialization and deserialization failed!" << std::endl;
     }
+    std::cout << "----------------------------" << std::endl;
     {
         std::cout << "Checking Serialization: " << std::endl;
         Serializer  serializer;
