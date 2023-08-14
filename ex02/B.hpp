@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Data.hpp                                           :+:      :+:    :+:   */
+/*   B.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/13 15:47:58 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/14 13:20:17 by aelkhali         ###   ########.fr       */
+/*   Created: 2023/08/14 14:07:56 by aelkhali          #+#    #+#             */
+/*   Updated: 2023/08/14 15:55:32 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DATA_HPP
-#define DATA_HPP
+#ifndef B_HPP
+#define B_HPP
 
-#include <iostream>
+#include "Base.hpp"
 
-struct Data
-{
-    int     x;
-    int     y;
-    char    c;
-    bool    flag;
-};
+class   B : public Base {};
 
 #endif

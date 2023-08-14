@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 15:42:08 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/13 15:52:05 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/14 13:48:46 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Serializer::Serializer  ( Serializer const& other )
 
 Serializer& Serializer::operator=(Serializer const& other )
 {
-    std::cout << "Serializer Copy Assignement operator" << std::endl;
+    // std::cout << "Serializer Copy Assignement operator" << std::endl;
     if (this != &other)
         std::cout << "Serializer Nothing to be copied" << std::endl;
     return *this;
@@ -40,10 +40,10 @@ Serializer::~Serializer ( void )
 // Serializer Methods
 uintptr_t   Serializer::serialize(Data* ptr)
 {
-    
+    return reinterpret_cast<uintptr_t>(ptr);
 }
 
 Data*       Serializer::deserialize(uintptr_t raw)
 {
-    
+    return reinterpret_cast<Data*>(raw);
 }

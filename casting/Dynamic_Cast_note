@@ -2,7 +2,10 @@ Certainly! Let's break down the `dynamic_cast` operator in C++:
 
 ### `dynamic_cast`:
 
-The `dynamic_cast` is primarily used for type-safe downcasting (converting pointers or references of a base class to pointers or references of a derived class) in the context of polymorphism. It is specifically designed to work with classes that are part of an inheritance hierarchy with polymorphic behavior.
+The `dynamic_cast` is primarily used for type-safe downcasting 
+(converting pointers or references of a base class to pointers or references of a derived class)
+in the context of polymorphism. It is specifically designed to work with classes that are part of
+an inheritance hierarchy with polymorphic behavior.
 
 1. **Usage**:
    - `dynamic_cast` is used for converting pointers or references of base classes to pointers or references of derived classes at runtime.
