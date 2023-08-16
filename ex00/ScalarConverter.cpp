@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 12:15:59 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/16 13:45:58 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/16 17:48:05 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,8 +171,8 @@ void    ScalarConverter::_convertFloat( std::string const& input )
         {
             this->_floatValue = stringToFloat(input);
             this->_charValue = static_cast<char>(this->_floatValue);
-            if (this->_floatValue > std::numeric_limits<int>::max() 
-                && this->_floatValue < std::numeric_limits<int>::min())
+            if (this->_floatValue < std::numeric_limits<int>::max()
+                && this->_floatValue > std::numeric_limits<int>::min())
                 this->_intValue = static_cast<int>(this->_floatValue);
             else
                 this->_intImpossible = true;
@@ -209,8 +209,8 @@ void    ScalarConverter::_convertDouble( std::string const& input )
         {
             this->_doubleValue = stringToDouble(input);
             this->_charImpossible = true;
-            if (this->_floatValue > std::numeric_limits<int>::max() 
-                && this->_floatValue < std::numeric_limits<int>::min())
+            if (this->_doubleValue < std::numeric_limits<int>::max() 
+                && this->_doubleValue > std::numeric_limits<int>::min())
                 this->_intValue = static_cast<int>(this->_doubleValue);
             else
                 this->_intImpossible = true;
@@ -281,6 +281,7 @@ bool    ScalarConverter::_isValidDouble(const std::string& input)
     }
 }
 
+// Special Input checkers
 bool    ScalarConverter::_isSpecialFloat(const std::string& input) 
 {
     return input == "-inff" || input == "+inff" || input == "nanf";
@@ -330,4 +331,3 @@ std::ostream& operator<<(std::ostream& out, ScalarConverter const& scalar)
         out << "double: impossible" << std::endl;
     return out;
 }
-            

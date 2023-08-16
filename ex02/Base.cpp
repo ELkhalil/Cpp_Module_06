@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 14:28:08 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/14 16:45:24 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/16 18:43:41 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ Base*   generate(void)
         case 2:
             return new C();
     }
-    return new A();;
+    return new A();
 }
 
 void    identify(Base* p)
