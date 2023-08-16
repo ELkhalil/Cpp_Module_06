@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 12:15:59 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/16 17:48:05 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/16 19:38:18 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,7 +208,6 @@ void    ScalarConverter::_convertDouble( std::string const& input )
         try
         {
             this->_doubleValue = stringToDouble(input);
-            this->_charImpossible = true;
             if (this->_doubleValue < std::numeric_limits<int>::max() 
                 && this->_doubleValue > std::numeric_limits<int>::min())
                 this->_intValue = static_cast<int>(this->_doubleValue);
@@ -219,6 +218,7 @@ void    ScalarConverter::_convertDouble( std::string const& input )
                 this->_floatValue = static_cast<float>(this->_doubleValue);
             else
                 this->_floatImpossible = true;
+            this->_charValue = static_cast<char>(this->_doubleValue);
         }
         catch (std::overflow_error const& e)
         {
