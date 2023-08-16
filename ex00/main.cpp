@@ -17,7 +17,7 @@ int main(int ac, char *av[])
     if (ac != 2)
     {
         std::cerr << "Error: Invalid Program Arguments" << std::endl;
-        std::exit(1);
+        return(1);
     }
     try
     {

@@ -21,7 +21,7 @@ BLUE = \033[0;34m
 STOP = \033[0m
 
 # Commands And Flags :
-CPP = c++ 
+CPP = clang++ 
 FLAGS =	-Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 

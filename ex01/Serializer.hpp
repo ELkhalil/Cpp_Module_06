@@ -13,15 +13,12 @@
 #ifndef SERIALIZER_HPP
 #define SERIALIZER_HPP
 
+#if !defined(_UINTPTR_T) && !defined(_UINTPTR_T_DEFINED) && !defined(__uintptr_t_defined) && !defined(uintptr_t)
+    typedef unsigned long int uintptr_t;
+#endif
+
 #include "Data.hpp"
 
-    /*
-        Serialization refers to the process of converting a complex data structure 
-        or object (such as an instance of a class) into a format that can be easily stored, 
-        transmitted, or reconstructed later.
-        Serialization involves converting the object's state into a sequence of bytes or a 
-        standardized format that can be saved to a file, sent over a network, or otherwise persisted.
-    */
 class   Serializer
 {
 public:

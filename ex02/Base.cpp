@@ -62,7 +62,7 @@ void identify(Base& p)
         std::cout << "A" << std::endl;
         (void)tmp;
     }
-    catch ( std::bad_cast const& ) 
+    catch ( ... ) 
     {
         try 
         {
@@ -70,14 +70,14 @@ void identify(Base& p)
             std::cout << "B" << std::endl;
             (void)tmp;
         } 
-        catch ( std::bad_cast const& ) 
+        catch ( ... ) 
         {
             try 
             {
                 C   &tmp = dynamic_cast<C&>(p);
                 std::cout << "C" << std::endl;
                 (void)tmp;
-            } catch ( std::bad_cast const& ) 
+            } catch ( ... ) 
             {
                 std::cout << "NULL" << std::endl;
             }

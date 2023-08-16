@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 14:00:42 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/13 15:32:54 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/16 13:08:43 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 #include <exception>
 #include <iostream>
+#include <cstdlib>
+#include <limits>
+#include <sstream>
 
 class   ScalarConverter
 {
@@ -74,4 +77,9 @@ private:
 
 std::ostream& operator<<(std::ostream& out, ScalarConverter const& scalar);
 
+
+// Conversion Functions
+int     stringToInt( std::string const& input );
+float   stringToFloat ( std::string const& input );
+double  stringToDouble ( std::string const& input );
 #endif
