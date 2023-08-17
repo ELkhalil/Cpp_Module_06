@@ -6,7 +6,7 @@
 #    By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/11 13:46:18 by aelkhali          #+#    #+#              #
-#    Updated: 2023/08/14 13:31:27 by aelkhali         ###   ########.fr        #
+#    Updated: 2023/08/17 14:46:43 by aelkhali         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ BLUE = \033[0;34m
 STOP = \033[0m
 
 # Commands And Flags :
-CPP = clang++ 
+CPP = c++ 
 FLAGS =	-Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
