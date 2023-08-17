@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 14:00:42 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/16 13:08:43 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/17 12:03:47 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,10 @@
 class   ScalarConverter
 {
 public:
-    ScalarConverter     ( void );
     ScalarConverter     ( ScalarConverter const& other );
     ~ScalarConverter    ( void );
     ScalarConverter&    operator=(ScalarConverter const& other);
-    void                convert( std::string const& input );
-    
+
     class   EmptyInputException : public   std::exception
     {
         public:
@@ -39,44 +37,35 @@ public:
             const char* what() const throw();
     };
 
-    char         getCharValue( void ) const;
-    int          getIntValue( void ) const;
-    float        getFloatValue( void ) const;
-    double       getDoubleValue( void ) const;
-
-    bool         getIsCharImpossible ( void ) const;
-    bool         getIsIntImpossible ( void ) const;
-    bool         getIsFloatImpossible ( void ) const;
-    bool         getIsDoubleImpossible ( void ) const;
+    static void     convert( std::string const& input );
+    static void     printScalarConverterData( void );
 
 private:
-    char         _charValue;
-    int          _intValue;
-    float        _floatValue;
-    double       _doubleValue;
+    ScalarConverter     ( void );
 
-    bool         _charImpossible;
-    bool         _intImpossible;
-    bool         _floatImpossible;
-    bool         _doubleImpossible;
+    static char     _charValue;
+    static int      _intValue;
+    static float    _floatValue;
+    static double   _doubleValue;
+    static bool     _charImpossible;
+    static bool     _intImpossible;
+    static bool     _floatImpossible;
+    static bool     _doubleImpossible;
+    
+    static char     _parseType( std::string const& input );
+    static bool     _isValidChar( std::string const& input );
+    static bool     _isValidInt( std::string const& input );
+    static bool     _isValidFloat( std::string const& input );
+    static bool     _isValidDouble( std::string const& input );
 
-    char         _parseType( std::string const& input );
-    bool         _isValidChar( std::string const& input );
-    bool         _isValidInt( std::string const& input );
-    bool         _isValidFloat( std::string const& input );
-    bool         _isValidDouble( std::string const& input );
+    static bool     _isSpecialFloat( std::string const& input );
+    static bool     _isSpecialDouble (std::string const& input );
 
-    bool         _isSpecialFloat( std::string const& input );
-    bool         _isSpecialDouble (std::string const& input );
-
-    void         _convertChar( std::string const& input );
-    void         _convertInt( std::string const& input );
-    void         _convertFloat( std::string const& input );
-    void         _convertDouble( std::string const& input );
+    static void     _convertChar( std::string const& input );
+    static void     _convertInt( std::string const& input );
+    static void     _convertFloat( std::string const& input );
+    static void     _convertDouble( std::string const& input );
 };
-
-std::ostream& operator<<(std::ostream& out, ScalarConverter const& scalar);
-
 
 // Conversion Functions
 int     stringToInt( std::string const& input );

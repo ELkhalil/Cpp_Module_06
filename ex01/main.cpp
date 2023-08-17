@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 13:25:22 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/14 16:46:33 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/17 12:10:07 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,10 @@
 int main( void )
 {
     {
-        Serializer  serializer;
         Data        data = {10, 50, 'D', true};
 
-        uintptr_t   serializedPtr = serializer.serialize(&data);
-        Data        *deserializedPtr = serializer.deserialize(serializedPtr);
+        uintptr_t   serializedPtr = Serializer::serialize(&data);
+        Data        *deserializedPtr = Serializer::deserialize(serializedPtr);
 
         if (deserializedPtr == &data)
             std::cout << "Serialization and deserialization successfully.." << std::endl;
@@ -30,14 +29,13 @@ int main( void )
     std::cout << "----------------------------" << std::endl;
     {
         std::cout << "Checking Serialization: " << std::endl;
-        Serializer  serializer;
         Data        data = {5, 10, 'X', true};
 
-        uintptr_t   serializedPtr = serializer.serialize(&data);
+        uintptr_t   serializedPtr = Serializer::serialize(&data);
         std::cout << "Address of Data is: " << &data << std::endl;
-        std::cout << "serializer.serialize() : 0x" << std::hex << serializedPtr << std::endl;
+        std::cout << "Serializer::serialize() : 0x" << std::hex << serializedPtr << std::endl;
 
-        Data        *dataPtr = serializer.deserialize(serializedPtr);
+        Data        *dataPtr = Serializer::deserialize(serializedPtr);
     
         std::cout << "Data.x = " << dataPtr->x << std::endl;
         std::cout << "Data.y = " << dataPtr->y << std::endl;

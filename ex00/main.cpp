@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 14:00:36 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/13 15:27:14 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/17 12:03:17 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,8 @@ int main(int ac, char *av[])
     try
     {
         std::string arg = av[1];
-        ScalarConverter scalar;
-
-        scalar.convert(arg);
-        std::cout << scalar << std::endl;
+        ScalarConverter::convert(arg);
+        ScalarConverter::printScalarConverterData();
     }
     catch( std::exception const& e)
     {

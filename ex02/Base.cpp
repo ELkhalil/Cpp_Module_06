@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 14:28:08 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/16 18:43:41 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/16 21:37:26 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void    identify(Base* p)
     else if (cType)
         std::cout << "C" << std::endl;
     else
-        std::cout << "NULL" << std::endl;
+        std::cout << "Unkown" << std::endl;
 }
 
 void identify(Base& p) 
@@ -79,7 +79,7 @@ void identify(Base& p)
                 (void)tmp;
             } catch ( ... ) 
             {
-                std::cout << "NULL" << std::endl;
+                std::cout << "Unkown" << std::endl;
             }
         }
     }
