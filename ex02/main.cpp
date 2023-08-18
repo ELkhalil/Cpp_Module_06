@@ -6,16 +6,12 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 14:01:45 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/16 21:38:14 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/18 10:23:31 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Base.hpp"
-
-class   X : public Base
-{
-    
-};
+#include "A.hpp"
 
 int main( void )
 {

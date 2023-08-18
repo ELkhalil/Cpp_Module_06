@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 12:15:59 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/17 12:02:25 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/18 16:23:12 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void    ScalarConverter::convert( std::string const& input )
         else
             throw(ScalarConverter::InvalidInputException());
     }
-    catch(ScalarConverter::InvalidInputException e)
+    catch(ScalarConverter::InvalidInputException& e)
     {
         std::cerr << e.what() << std::endl;
         exit(1);
@@ -98,12 +98,12 @@ char    ScalarConverter::_parseType( std::string const& input )
         else
             throw(ScalarConverter::InvalidInputException());
     }
-    catch(ScalarConverter::EmptyInputException e)
+    catch(ScalarConverter::EmptyInputException& e)
     {
         std::cerr << e.what() << std::endl;
         exit(1);
     }
-    catch(ScalarConverter::InvalidInputException e)
+    catch(ScalarConverter::InvalidInputException& e)
     {
         std::cerr << e.what() << std::endl;
         exit(1);

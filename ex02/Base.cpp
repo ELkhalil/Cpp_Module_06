@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 14:28:08 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/16 21:37:26 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/18 10:20:49 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ Base*   generate(void)
 
 void    identify(Base* p)
 {
+    if (p == NULL)
+        std::cout << "P is pointing to : NULL";
+
     A*  aType = dynamic_cast<A*>(p);
     B*  bType = dynamic_cast<B*>(p);
     C*  cType = dynamic_cast<C*>(p);
@@ -56,7 +59,7 @@ void    identify(Base* p)
 void identify(Base& p) 
 {
     std::cout << "the actual type of the object pointed to by p is: ";
-    try 
+    try
     {
         A   &tmp = dynamic_cast<A&>(p);
         std::cout << "A" << std::endl;
